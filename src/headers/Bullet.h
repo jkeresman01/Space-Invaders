@@ -1,0 +1,26 @@
+#pragma once
+
+#include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/System/Vector2.hpp>
+
+namespace space
+{
+
+class Bullet
+{
+  public:
+    Bullet() = default;
+    Bullet(const sf::Vector2f &positon);
+
+    void update();
+
+    void render(sf::RenderWindow &window) const;
+
+    sf::Vector2f getPositon() const { return m_bullet.getPosition(); }
+
+  private:
+    sf::RectangleShape m_bullet;
+};
+
+} // namespace space

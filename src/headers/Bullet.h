@@ -11,7 +11,7 @@ class Bullet
 {
   public:
     Bullet() = default;
-    Bullet(const sf::Vector2f &positon);
+    explicit Bullet(const sf::Vector2f &positon);
 
     void update();
 

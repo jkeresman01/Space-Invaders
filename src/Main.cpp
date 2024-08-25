@@ -13,9 +13,9 @@ int main()
 
     std::vector<space::Enemy> enemies;
 
-    for(size_t i = 0; i < 5; ++i)
+    for (size_t i = 0; i < 5; ++i)
     {
-        for(size_t j = 0; j < 11; ++j)
+        for (size_t j = 0; j < 11; ++j)
         {
             float positionX = 200 + j * (40 + 30);
             float positionY = 50 + i * (40 + 20);
@@ -23,6 +23,8 @@ int main()
             enemies.emplace_back(positionX, positionY);
         }
     }
+
+    bool changeDirection = false;
 
     while (window.isOpen())
     {
@@ -37,15 +39,45 @@ int main()
 
         spaceship.update();
 
-        for(space::Enemy& enemy : enemies)
+        for (space::Enemy &enemy : enemies)
         {
-            enemy.update();
+            if (enemy.getPosition().x >= 1240)
+            {
+                changeDirection = true;
+                break;
+            }
+
+            if (enemy.getPosition().x <= 0)
+            {
+                changeDirection = true;
+                break;
+            }
         }
+
+        if (changeDirection)
+        {
+            for (space::Enemy &enemy : enemies)
+            {
+                {
+                    enemy.changeDirection();
+                }
+            }
+            changeDirection = false;
+        }
+
+        for (space::Enemy &enemy : enemies)
+        {
+            {
+                enemy.update();
+            }
+        }
+
+        changeDirection = false;
 
         window.clear();
         spaceship.render(window);
 
-        for(const space::Enemy& enemy : enemies)
+        for (const space::Enemy &enemy : enemies)
         {
             enemy.render(window);
         }

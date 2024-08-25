@@ -11,6 +11,19 @@ int main()
     space::Spaceship spaceship;
     space::Enemy enemy(300, 300);
 
+    std::vector<space::Enemy> enemies;
+
+    for(size_t i = 0; i < 5; ++i)
+    {
+        for(size_t j = 0; j < 11; ++j)
+        {
+            float positionX = 200 + j * (40 + 30);
+            float positionY = 50 + i * (40 + 20);
+
+            enemies.emplace_back(positionX, positionY);
+        }
+    }
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -23,11 +36,20 @@ int main()
         }
 
         spaceship.update();
-        enemy.update();
+
+        for(space::Enemy& enemy : enemies)
+        {
+            enemy.update();
+        }
 
         window.clear();
         spaceship.render(window);
-        enemy.render(window);
+
+        for(const space::Enemy& enemy : enemies)
+        {
+            enemy.render(window);
+        }
+
         window.display();
     }
 }

@@ -13,6 +13,9 @@ Spaceship::Spaceship() : m_position(1280 / 2.0f, 620)
     m_spaceship.setTextureRect({0, 0, 200, 200});
     m_spaceship.setScale(0.5f, 0.5f);
     m_spaceship.setPosition(m_position);
+
+    m_shootingSoundEffect.setBuffer(
+        ResourceManager::Instance().getSoundBuffer("resources/sound/shooting.wav"));
 }
 
 void Spaceship::update()
@@ -27,12 +30,17 @@ void Spaceship::update()
         m_position.x += 1.0f;
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) and
+        m_clock.getElapsedTime().asSeconds() >= RELOAD_TIME)
     {
         sf::Vector2f positon = m_spaceship.getPosition();
         positon.x += 40.0f;
 
         m_bullets.emplace_back(positon);
+
+        m_shootingSoundEffect.play();
+
+        m_clock.restart();
     }
 
     std::vector<Bullet>::iterator it = m_bullets.begin();

@@ -1,12 +1,15 @@
 #pragma once
 
-#include "Bullet.h"
+#include <SFML/Audio/Sound.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Sprite.hpp>
+#include <SFML/System/Clock.hpp>
 #include <SFML/System/Vector2.hpp>
 
 #include <cstdint>
 #include <vector>
+
+#include "Bullet.h"
 
 namespace space
 {
@@ -21,8 +24,12 @@ class Spaceship
 
   private:
     sf::Sprite m_spaceship;
+    sf::Clock m_clock;
     sf::Vector2f m_position;
+    sf::Sound m_shootingSoundEffect;
     std::vector<Bullet> m_bullets;
+
+    static constexpr float RELOAD_TIME = 0.8f;
 };
 
 } // namespace space

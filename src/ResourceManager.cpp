@@ -33,6 +33,34 @@ void ResourceManager::loadTexture(const std::filesystem::path &filepath)
     m_textures.emplace(filepath.string(), texture);
 }
 
+const sf::SoundBuffer &ResourceManager::getSoundBuffer(const std::filesystem::path &filepath)
+{
+    SoundBuffersUnorderedMapT::const_iterator it = m_soundBuffers.find(filepath.string());
+
+    if (it == m_soundBuffers.end())
+    {
+        loadSoundBuffer(filepath);
+        it = m_soundBuffers.find(filepath);
+    }
+
+    return it->second;
+}
+
+void ResourceManager::loadSoundBuffer(const std::filesystem::path &filepath)
+{
+    sf::SoundBuffer soundBuffer;
+
+    bool isSoundBufferLoadedSuccsfully = soundBuffer.loadFromFile(filepath);
+
+    if (!isSoundBufferLoadedSuccsfully)
+    {
+        LOG_ERROR("Failed to texture from " << filepath.string() << "!");
+        return;
+    }
+
+    m_soundBuffers.emplace(filepath.string(), soundBuffer);
+}
+
 ResourceManager &ResourceManager::Instance()
 {
     static ResourceManager instance;

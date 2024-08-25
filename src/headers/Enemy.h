@@ -3,9 +3,16 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/System/Clock.hpp>
+#include <SFML/System/Vector2.hpp>
 
 namespace space
 {
+
+enum class Direction
+{
+    RIGHT = 0,
+    LEFT  = 1,
+};
 
 class Enemy
 {
@@ -13,13 +20,19 @@ class Enemy
     Enemy() = default;
     Enemy(float positionX, float positionY);
 
+    void render(sf::RenderWindow &window) const;
+
     void update();
 
-    void render(sf::RenderWindow &window) const;
+    void changeDirection();
+
+    sf::Vector2f getPosition() const { return m_enemy.getPosition(); }
 
   private:
     sf::Sprite m_enemy;
     sf::Clock m_clock;
+
+    Direction m_direction;
 
     static constexpr float HOLD_TIME = 1.0f;
 };

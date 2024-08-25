@@ -6,7 +6,7 @@
 
 namespace space
 {
-Enemy::Enemy(float positionX, float positionY)
+Enemy::Enemy(float positionX, float positionY) : m_direction(Direction::RIGHT)
 {
     m_enemy.setTexture(ResourceManager::Instance().getTexture("resources/textures/tada.png"));
     m_enemy.setTextureRect({0, 200, 200, 200});
@@ -15,16 +15,25 @@ Enemy::Enemy(float positionX, float positionY)
     m_enemy.setColor(sf::Color::White);
 }
 
-void Enemy::update() 
+void Enemy::changeDirection()
 {
-    if(m_clock.getElapsedTime().asSeconds() >= HOLD_TIME)
+    m_direction = m_direction == Direction::RIGHT ? Direction::LEFT : Direction::RIGHT;
+
+    sf::Vector2f position = m_enemy.getPosition();
+    position.y += 1.0f;
+
+    m_enemy.setPosition(position);
+}
+
+void Enemy::update()
+{
+    if (m_clock.getElapsedTime().asSeconds() >= HOLD_TIME)
     {
         sf::Vector2f position = m_enemy.getPosition();
 
-        position.x += 12.0f;
+        position.x += m_direction == Direction::RIGHT ? 12.0f : -12.0f;
 
         m_enemy.setPosition(position);
-
         m_clock.restart();
     }
 }

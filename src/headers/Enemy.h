@@ -5,8 +5,17 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/System/Vector2.hpp>
 
+#include "Animation.h"
+
 namespace space
 {
+
+enum class EnemyAnimations
+{
+    ALIVE = 0,
+    DEAD = 1,
+    COUNT = 2,
+};
 
 enum class Direction
 {
@@ -31,8 +40,9 @@ class Enemy
   private:
     sf::Sprite m_enemy;
     sf::Clock m_clock;
-
     Direction m_direction;
+    EnemyAnimations m_currentAnimation;
+    Animation m_animations[int(EnemyAnimations::COUNT)];
 
     static constexpr float HOLD_TIME = 1.0f;
 };

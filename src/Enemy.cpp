@@ -13,6 +13,8 @@ Enemy::Enemy(float positionX, float positionY) : m_direction(Direction::RIGHT)
     m_enemy.setScale(0.3, 0.3);
     m_enemy.setPosition(sf::Vector2f(positionX, positionY));
     m_enemy.setColor(sf::Color::White);
+
+    m_currentAnimation = EnemyAnimations::ALIVE;
 }
 
 void Enemy::changeDirection()

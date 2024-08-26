@@ -13,7 +13,7 @@ namespace space
 enum class EnemyAnimations
 {
     ALIVE = 0,
-    DEAD = 1,
+    DEAD  = 1,
     COUNT = 2,
 };
 

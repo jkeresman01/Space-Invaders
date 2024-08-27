@@ -24,7 +24,6 @@ void Animation::update(float deltaTime)
     while (m_elapsedTime >= HOLD_TIME)
     {
         m_elapsedTime -= HOLD_TIME;
-
         if (++m_currentFrame >= m_numberOfFrames)
         {
             m_currentFrame = 0;

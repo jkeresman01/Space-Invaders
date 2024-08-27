@@ -19,8 +19,8 @@ void Enemy::changeDirection()
     m_direction = (m_direction == Direction::RIGHT) ? Direction::LEFT : Direction::RIGHT;
 
     sf::Vector2f position = m_enemy.getPosition();
-    position.y += 40.0f;
-    position.x -= 40.0f;
+    position.y += DIRECTION_CHANGE_MOVMENT;
+    position.x -= DIRECTION_CHANGE_MOVMENT;
 
     m_enemy.setPosition(position);
 }

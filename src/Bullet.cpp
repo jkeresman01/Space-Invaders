@@ -4,7 +4,7 @@ namespace space
 {
 Bullet::Bullet(const sf::Vector2f &position)
 {
-    m_bullet.setSize(sf::Vector2f(8.0f, 12.0f));
+    m_bullet.setSize(sf::Vector2f(6.0f, 12.0f));
     m_bullet.setFillColor(sf::Color::Green);
     m_bullet.setPosition(position);
 }

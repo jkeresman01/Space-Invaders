@@ -21,6 +21,9 @@ class Bullet
 
   private:
     sf::RectangleShape m_bullet;
+
+    static constexpr float WIDTH  = 6.0f;
+    static constexpr float HEIGHT = 12.0f;
 };
 
 } // namespace space

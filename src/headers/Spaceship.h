@@ -11,7 +11,6 @@
 #include <cstdint>
 #include <vector>
 
-
 namespace space
 {
 class Spaceship

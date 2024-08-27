@@ -4,9 +4,11 @@
 
 namespace space
 {
-Enemy::Enemy(float positionX, float positionY) : m_direction(Direction::RIGHT), m_currentAnimation(EnemyAnimations::ALIVE)
+Enemy::Enemy(float positionX, float positionY)
+    : m_direction(Direction::RIGHT), m_currentAnimation(EnemyAnimations::ALIVE)
 {
-    m_animations[int(EnemyAnimations::ALIVE)] = Animation(0, 200, 500, 200, 2, "resources/textures/tada.png");
+    m_animations[int(EnemyAnimations::ALIVE)] =
+        Animation(0, 200, 500, 200, 2, "resources/textures/tada.png");
 
     m_enemy.setScale(SCALE_X, SCALE_Y);
     m_enemy.setPosition(sf::Vector2f(positionX, positionY));

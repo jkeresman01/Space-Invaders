@@ -69,12 +69,11 @@ int main()
             changeDirection = false;
         }
 
-          auto end = std::chrono::steady_clock::now();
+        auto end = std::chrono::steady_clock::now();
 
         float deltaTime = std::chrono::duration<float>(end - start).count();
 
         start = end;
-
 
         for (space::Enemy &enemy : enemies)
         {

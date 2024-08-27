@@ -48,6 +48,8 @@ class Enemy
 
     static constexpr float SCALE_X = 0.3f;
     static constexpr float SCALE_Y = 0.3f;
+
+    static constexpr float HORIZONTAL_MOVMENT = 12.0f;
 };
 
 } // namespace space

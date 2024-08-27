@@ -31,7 +31,7 @@ void Enemy::update(float deltaTime)
     {
         sf::Vector2f position = m_enemy.getPosition();
 
-        position.x += m_direction == Direction::RIGHT ? 12.0f : -12.0f;
+        position.x += (m_direction == Direction::RIGHT) ? HORIZONTAL_MOVMENT : -HORIZONTAL_MOVMENT;
 
         m_animations[int(m_currentAnimation)].update(deltaTime);
         m_animations[int(m_currentAnimation)].applyToSprite(m_enemy);

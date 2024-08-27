@@ -31,7 +31,7 @@ class Enemy
 
     void render(sf::RenderWindow &window) const;
 
-    void update();
+    void update(float deltaTime);
 
     void changeDirection();
 
@@ -45,6 +45,9 @@ class Enemy
     Animation m_animations[int(EnemyAnimations::COUNT)];
 
     static constexpr float HOLD_TIME = 1.0f;
+
+    static constexpr float SCALE_X = 0.3f;
+    static constexpr float SCALE_Y = 0.3f;
 };
 
 } // namespace space

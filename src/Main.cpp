@@ -1,6 +1,8 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
+#include <chrono>
+
 #include "headers/Enemy.h"
 #include "headers/Spaceship.h"
 
@@ -12,6 +14,8 @@ int main()
     space::Enemy enemy(300, 300);
 
     std::vector<space::Enemy> enemies;
+
+    auto start = std::chrono::steady_clock::now();
 
     for (size_t i = 0; i < 5; ++i)
     {
@@ -65,10 +69,17 @@ int main()
             changeDirection = false;
         }
 
+          auto end = std::chrono::steady_clock::now();
+
+        float deltaTime = std::chrono::duration<float>(end - start).count();
+
+        start = end;
+
+
         for (space::Enemy &enemy : enemies)
         {
             {
-                enemy.update();
+                enemy.update(deltaTime);
             }
         }
 

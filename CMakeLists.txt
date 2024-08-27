@@ -11,6 +11,7 @@ set(SOURCE_FILES
     src/ResourceManager.cpp
     src/Spaceship.cpp
     src/Bullet.cpp
+    src/Animation.cpp
     src/Enemy.cpp
     src/Main.cpp
 )

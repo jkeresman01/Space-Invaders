@@ -2,19 +2,14 @@
 
 #include <SFML/System/Vector2.hpp>
 
-#include "headers/ResourceManager.h"
-
 namespace space
 {
-Enemy::Enemy(float positionX, float positionY) : m_direction(Direction::RIGHT)
+Enemy::Enemy(float positionX, float positionY) : m_direction(Direction::RIGHT), m_currentAnimation(EnemyAnimations::ALIVE)
 {
-    m_enemy.setTexture(ResourceManager::Instance().getTexture("resources/textures/tada.png"));
-    m_enemy.setTextureRect({0, 200, 200, 200});
-    m_enemy.setScale(0.3, 0.3);
-    m_enemy.setPosition(sf::Vector2f(positionX, positionY));
-    m_enemy.setColor(sf::Color::White);
+    m_animations[int(EnemyAnimations::ALIVE)] = Animation(0, 200, 500, 200, 2, "resources/textures/tada.png");
 
-    m_currentAnimation = EnemyAnimations::ALIVE;
+    m_enemy.setScale(SCALE_X, SCALE_Y);
+    m_enemy.setPosition(sf::Vector2f(positionX, positionY));
 }
 
 void Enemy::changeDirection()
@@ -28,13 +23,16 @@ void Enemy::changeDirection()
     m_enemy.setPosition(position);
 }
 
-void Enemy::update()
+void Enemy::update(float deltaTime)
 {
     if (m_clock.getElapsedTime().asSeconds() >= HOLD_TIME)
     {
         sf::Vector2f position = m_enemy.getPosition();
 
         position.x += m_direction == Direction::RIGHT ? 12.0f : -12.0f;
+
+        m_animations[int(m_currentAnimation)].update(deltaTime);
+        m_animations[int(m_currentAnimation)].applyToSprite(m_enemy);
 
         m_enemy.setPosition(position);
         m_clock.restart();

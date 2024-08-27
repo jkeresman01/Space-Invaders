@@ -6,10 +6,11 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/System/Vector2.hpp>
 
+#include "Bullet.h"
+
 #include <cstdint>
 #include <vector>
 
-#include "Bullet.h"
 
 namespace space
 {

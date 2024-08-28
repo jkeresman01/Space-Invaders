@@ -23,6 +23,9 @@ class Spaceship
     void render(sf::RenderWindow &window) const;
 
   private:
+    void renderBullets(sf::RenderWindow &window) const;
+
+  private:
     sf::Sprite m_spaceship;
     sf::Clock m_clock;
     sf::Vector2f m_position;
@@ -30,6 +33,9 @@ class Spaceship
     std::vector<Bullet> m_bullets;
 
     static constexpr float RELOAD_TIME = 0.8f;
+
+    static constexpr float SCALE_X = 0.5f;
+    static constexpr float SCALE_Y = 0.5f;
 };
 
 } // namespace space

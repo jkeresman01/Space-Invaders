@@ -3,16 +3,16 @@
 #include "headers/ResourceManager.h"
 
 #include <SFML/Graphics.hpp>
+#include <algorithm>
 
 namespace space
 {
 
 Spaceship::Spaceship() : m_position(1280 / 2.0f, 620)
 {
-    m_spaceship.setTexture(ResourceManager::Instance().getTexture("resources/textures/tada.png"));
-    m_spaceship.setTextureRect({0, 0, 200, 200});
-    m_spaceship.setScale(0.5f, 0.5f);
+    m_spaceship.setTexture(ResourceManager::Instance().getTexture("resources/textures/ship.png"));
     m_spaceship.setPosition(m_position);
+    m_spaceship.setScale(SCALE_X, SCALE_Y);
 
     m_shootingSoundEffect.setBuffer(
         ResourceManager::Instance().getSoundBuffer("resources/sound/shooting.wav"));
@@ -39,12 +39,10 @@ void Spaceship::update()
         m_bullets.emplace_back(positon);
 
         m_shootingSoundEffect.play();
-
         m_clock.restart();
     }
 
     std::vector<Bullet>::iterator it = m_bullets.begin();
-
     while (it != m_bullets.end())
     {
         it->update();
@@ -65,11 +63,12 @@ void Spaceship::update()
 void Spaceship::render(sf::RenderWindow &window) const
 {
     window.draw(m_spaceship);
+    renderBullets(window);
+}
 
-    for (const Bullet &bullet : m_bullets)
-    {
-        bullet.render(window);
-    }
+void Spaceship::renderBullets(sf::RenderWindow &window) const
+{
+    std::for_each(m_bullets.begin(), m_bullets.end(), [&window](const Bullet &bullet) { bullet.render(window); } );
 }
 
 } // namespace space

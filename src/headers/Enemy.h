@@ -31,7 +31,7 @@ class Enemy
 
     void render(sf::RenderWindow &window) const;
 
-    void update(float deltaTime);
+    void update();
 
     void changeDirection();
 

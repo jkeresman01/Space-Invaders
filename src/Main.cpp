@@ -15,8 +15,6 @@ int main()
 
     std::vector<space::Enemy> enemies;
 
-    auto start = std::chrono::steady_clock::now();
-
     for (size_t i = 0; i < 5; ++i)
     {
         for (size_t j = 0; j < 11; ++j)
@@ -69,16 +67,10 @@ int main()
             changeDirection = false;
         }
 
-        auto end = std::chrono::steady_clock::now();
-
-        float deltaTime = std::chrono::duration<float>(end - start).count();
-
-        start = end;
-
         for (space::Enemy &enemy : enemies)
         {
             {
-                enemy.update(deltaTime);
+                enemy.update();
             }
         }
 

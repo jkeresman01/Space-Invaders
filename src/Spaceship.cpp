@@ -68,7 +68,8 @@ void Spaceship::render(sf::RenderWindow &window) const
 
 void Spaceship::renderBullets(sf::RenderWindow &window) const
 {
-    std::for_each(m_bullets.begin(), m_bullets.end(), [&window](const Bullet &bullet) { bullet.render(window); } );
+    std::for_each(m_bullets.begin(), m_bullets.end(),
+                  [&window](const Bullet &bullet) { bullet.render(window); });
 }
 
 } // namespace space

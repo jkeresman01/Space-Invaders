@@ -19,23 +19,17 @@ Enemy::Enemy(float positionX, float positionY)
 void Enemy::changeDirection()
 {
     m_direction = (m_direction == Direction::RIGHT) ? Direction::LEFT : Direction::RIGHT;
-
-    sf::Vector2f position = m_enemy.getPosition();
-    position.y += DIRECTION_CHANGE_MOVMENT;
-    position.x -= DIRECTION_CHANGE_MOVMENT;
-
-    m_enemy.setPosition(position);
+    m_enemy.move(DIRECTION_CHANGE_MOVMENT, -DIRECTION_CHANGE_MOVMENT);
 }
 
 void Enemy::update()
 {
     if (m_clock.getElapsedTime().asSeconds() >= HOLD_TIME)
     {
-        sf::Vector2f position = m_enemy.getPosition();
+        float movement =
+            (m_direction == Direction::RIGHT) ? HORIZONTAL_MOVMENT : -HORIZONTAL_MOVMENT;
+        m_enemy.move(movement, 0);
 
-        position.x += (m_direction == Direction::RIGHT) ? HORIZONTAL_MOVMENT : -HORIZONTAL_MOVMENT;
-
-        m_enemy.setPosition(position);
         m_clock.restart();
     }
 }

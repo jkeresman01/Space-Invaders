@@ -33,10 +33,11 @@ void Spaceship::update()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) and
         m_clock.getElapsedTime().asSeconds() >= RELOAD_TIME)
     {
-        sf::Vector2f positon = m_spaceship.getPosition();
-        positon.x += 40.0f;
 
-        m_bullets.emplace_back(positon);
+        sf::Vector2f bulletPosition = m_spaceship.getPosition();
+        bulletPosition.x += 40.0f;
+
+        m_bullets.emplace_back(bulletPosition);
 
         m_shootingSoundEffect.play();
         m_clock.restart();

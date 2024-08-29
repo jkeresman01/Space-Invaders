@@ -34,8 +34,8 @@ class Spaceship
 
     static constexpr float RELOAD_TIME = 0.8f;
 
-    static constexpr float SCALE_X = 0.5f;
-    static constexpr float SCALE_Y = 0.5f;
+    static constexpr float SCALE_X = 2.0f;
+    static constexpr float SCALE_Y = 2.0f;
 };
 
 } // namespace space

@@ -11,10 +11,7 @@ Bullet::Bullet(const sf::Vector2f &position)
 
 void Bullet::update()
 {
-    sf::Vector2f postion = m_bullet.getPosition();
-    postion.y -= 2.0f;
-
-    m_bullet.setPosition(postion);
+    m_bullet.move(MOVEMENT_X, -MOVEMENT_Y);
 }
 
 void Bullet::render(sf::RenderWindow &window) const

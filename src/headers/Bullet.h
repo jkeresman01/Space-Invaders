@@ -24,6 +24,9 @@ class Bullet
 
     static constexpr float WIDTH  = 6.0f;
     static constexpr float HEIGHT = 12.0f;
+
+    static constexpr float MOVEMENT_X = 0.0f;
+    static constexpr float MOVEMENT_Y = 2.0f;
 };
 
 } // namespace space

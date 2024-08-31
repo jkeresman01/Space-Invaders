@@ -19,7 +19,7 @@ Enemy::Enemy(float positionX, float positionY)
 void Enemy::changeDirection()
 {
     m_direction = (m_direction == Direction::RIGHT) ? Direction::LEFT : Direction::RIGHT;
-    m_enemy.move(DIRECTION_CHANGE_MOVMENT, -DIRECTION_CHANGE_MOVMENT);
+    m_enemy.move(-DIRECTION_CHANGE_MOVMENT, DIRECTION_CHANGE_MOVMENT);
 }
 
 void Enemy::update()

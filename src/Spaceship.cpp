@@ -35,7 +35,7 @@ void Spaceship::update()
     {
 
         sf::Vector2f bulletPosition = m_spaceship.getPosition();
-        bulletPosition.x += 40.0f;
+        bulletPosition.x += 45.0f;
 
         m_bullets.emplace_back(bulletPosition);
 

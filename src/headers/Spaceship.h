@@ -13,6 +13,7 @@
 
 namespace space
 {
+
 class Spaceship
 {
   public:

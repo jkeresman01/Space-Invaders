@@ -11,7 +11,7 @@ Animation::Animation(uint32_t positionX, uint32_t positionY, uint32_t width, uin
 {
     m_texture = ResourceManager::Instance().getTexture(filepath);
 
-    for (uint32_t i = 0; i < m_numberOfFrames; ++i)
+    for (size_t i = 0; i < m_numberOfFrames; ++i)
     {
         m_frames.emplace_back(positionX + i * width, positionY, width, height);
     }

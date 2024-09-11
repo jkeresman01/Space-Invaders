@@ -28,8 +28,8 @@ void Enemy::update()
     {
         float movement =
             (m_direction == Direction::RIGHT) ? HORIZONTAL_MOVMENT : -HORIZONTAL_MOVMENT;
-        m_enemy.move(movement, 0);
 
+        m_enemy.move(movement, 0);
         m_clock.restart();
     }
 }

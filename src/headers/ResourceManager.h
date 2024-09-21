@@ -9,7 +9,7 @@
 namespace space
 {
 
-typedef std::unordered_map<std::string, sf::Texture> TexturesUnorderedMap;
+typedef std::unordered_map<std::string, sf::Texture> TexturesUnorderedMapT;
 typedef std::unordered_map<std::string, sf::SoundBuffer> SoundBuffersUnorderedMapT;
 
 class ResourceManager
@@ -30,7 +30,7 @@ class ResourceManager
     void loadSoundBuffer(const std::filesystem::path &filepath);
 
   private:
-    TexturesUnorderedMap m_textures;
+    TexturesUnorderedMapT m_textures;
     SoundBuffersUnorderedMapT m_soundBuffers;
 };
 

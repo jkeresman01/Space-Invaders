@@ -7,7 +7,7 @@ namespace space
 
 const sf::Texture &ResourceManager::getTexture(const std::filesystem::path &filepath)
 {
-    TexturesUnorderedMap::const_iterator it = m_textures.find(filepath.string());
+    TexturesUnorderedMapT::const_iterator it = m_textures.find(filepath.string());
 
     if (it == m_textures.end())
     {

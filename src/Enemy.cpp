@@ -3,13 +3,14 @@
 #include <SFML/System/Vector2.hpp>
 
 #include "headers/ResourceManager.h"
+#include "headers/Textures.h"
 
 namespace space
 {
 Enemy::Enemy(float positionX, float positionY)
     : m_direction(Direction::RIGHT), m_currentAnimation(EnemyAnimations::ALIVE)
 {
-    m_enemy.setTexture(ResourceManager::Instance().getTexture("resources/textures/tada.png"));
+    m_enemy.setTexture(ResourceManager::Instance().getTexture(textures::Enemies));
     m_enemy.setTextureRect({0, 200, 200, 200});
 
     m_enemy.setScale(SCALE_X, SCALE_Y);

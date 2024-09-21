@@ -1,8 +1,11 @@
 #include "headers/Spaceship.h"
 
-#include "headers/ResourceManager.h"
-
 #include <SFML/Graphics.hpp>
+
+#include "headers/ResourceManager.h"
+#include "headers/Sound.h"
+#include "headers/Textures.h"
+
 #include <algorithm>
 
 namespace space
@@ -10,12 +13,11 @@ namespace space
 
 Spaceship::Spaceship() : m_position(1280 / 2.0f, 620)
 {
-    m_spaceship.setTexture(ResourceManager::Instance().getTexture("resources/textures/ship.png"));
+    m_spaceship.setTexture(ResourceManager::Instance().getTexture(textures::Spaceship));
     m_spaceship.setPosition(m_position);
     m_spaceship.setScale(SCALE_X, SCALE_Y);
 
-    m_shootingSoundEffect.setBuffer(
-        ResourceManager::Instance().getSoundBuffer("resources/sound/shooting.wav"));
+    m_shootingSoundEffect.setBuffer(ResourceManager::Instance().getSoundBuffer(sound::Shooting));
 }
 
 void Spaceship::update()

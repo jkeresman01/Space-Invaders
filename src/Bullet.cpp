@@ -1,11 +1,14 @@
 #include "headers/Bullet.h"
 
+#include "headers/Colors.h"
+
 namespace space
 {
+
 Bullet::Bullet(const sf::Vector2f &position)
 {
     m_bullet.setSize(sf::Vector2f(WIDTH, HEIGHT));
-    m_bullet.setFillColor(sf::Color::Green);
+    m_bullet.setFillColor(colors::Green);
     m_bullet.setPosition(position);
 }
 

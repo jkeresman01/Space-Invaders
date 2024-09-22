@@ -7,6 +7,7 @@
 
 namespace space
 {
+
 Enemy::Enemy(float positionX, float positionY)
     : m_direction(Direction::RIGHT), m_currentAnimation(EnemyAnimations::ALIVE)
 {

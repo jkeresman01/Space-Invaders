@@ -20,7 +20,7 @@ void StateMachine::addState(StateRefT state, bool isReplacing)
     getActiveState()->init();
 }
 
-void StateMachine::remoteState()
+void StateMachine::removeState()
 {
     if (!m_states.empty())
     {

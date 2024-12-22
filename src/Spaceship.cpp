@@ -33,10 +33,11 @@ void Spaceship::processEvents()
 
 void Spaceship::update()
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) and
-        m_clock.getElapsedTime().asSeconds() >= RELOAD_TIME)
-    {
+    bool isReloadTimerExpired = m_clock.getElapsedTime().asSeconds() >= RELOAD_TIME;
+    bool isSpacePressed       = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
 
+    if (isSpacePressed and isReloadTimerExpired)
+    {
         sf::Vector2f bulletPosition = m_spaceship.getPosition();
         bulletPosition.x += 45.0f;
 
@@ -46,7 +47,15 @@ void Spaceship::update()
         m_clock.restart();
     }
 
+    updateBullets();
+
+    m_spaceship.setPosition(m_position);
+}
+
+void Spaceship::updateBullets()
+{
     std::vector<Bullet>::iterator it = m_bullets.begin();
+
     while (it != m_bullets.end())
     {
         it->update();
@@ -60,8 +69,6 @@ void Spaceship::update()
             ++it;
         }
     }
-
-    m_spaceship.setPosition(m_position);
 }
 
 void Spaceship::render(sf::RenderWindow &window) const

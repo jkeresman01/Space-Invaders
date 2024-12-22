@@ -26,6 +26,7 @@ class Spaceship
 
   private:
     void renderBullets(sf::RenderWindow &window) const;
+    void updateBullets();
 
   private:
     sf::Sprite m_spaceship;

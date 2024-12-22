@@ -6,8 +6,6 @@
 #include "headers/Sound.h"
 #include "headers/Textures.h"
 
-#include <algorithm>
-
 namespace space
 {
 
@@ -20,7 +18,7 @@ Spaceship::Spaceship() : m_position(1280 / 2.0f, 620)
     m_shootingSoundEffect.setBuffer(ResourceManager::Instance().getSoundBuffer(sound::Shooting));
 }
 
-void Spaceship::update()
+void Spaceship::processEvents()
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
@@ -31,7 +29,10 @@ void Spaceship::update()
     {
         m_position.x += 1.0f;
     }
+}
 
+void Spaceship::update()
+{
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) and
         m_clock.getElapsedTime().asSeconds() >= RELOAD_TIME)
     {
@@ -71,8 +72,10 @@ void Spaceship::render(sf::RenderWindow &window) const
 
 void Spaceship::renderBullets(sf::RenderWindow &window) const
 {
-    std::for_each(m_bullets.begin(), m_bullets.end(),
-                  [&window](const Bullet &bullet) { bullet.render(window); });
+    for (const Bullet &bullet : m_bullets)
+    {
+        bullet.render(window);
+    }
 }
 
 } // namespace space

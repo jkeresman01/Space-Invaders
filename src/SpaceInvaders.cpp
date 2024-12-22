@@ -50,6 +50,8 @@ void SpaceInvaders::processEvents()
             m_window.close();
         }
 
+        m_spaceship.processEvents();
+
         checkForDirectionChange();
     }
 }

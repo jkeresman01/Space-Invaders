@@ -20,6 +20,7 @@ class Spaceship
     Spaceship();
 
     void update();
+    void processEvents();
 
     void render(sf::RenderWindow &window) const;
 

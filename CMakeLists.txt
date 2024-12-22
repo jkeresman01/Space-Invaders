@@ -9,6 +9,7 @@ include_directories(src/headers)
 
 set(SOURCE_FILES
     src/ResourceManager.cpp
+    src/SpaceInvaders.cpp
     src/Spaceship.cpp
     src/Bullet.cpp
     src/Animation.cpp
